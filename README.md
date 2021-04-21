@@ -1,6 +1,6 @@
 # Cycle Self-Training for Instance Search in Real World
 
-This code has the source code for the paper "Cycle Self-Training (CST) for Instance Search in Real World Applications". Including:
+This code has the source code for the paper "Cycle Self-Training for Instance Search in Real World Applications". Including:
 
 * the annotation of INS-PRW
 
@@ -9,7 +9,7 @@ This code has the source code for the paper "Cycle Self-Training (CST) for Insta
 ## Annotation
 
 ### 1. Annotation description
-* Please download original images from [CUHK-SYSU](https://github.com/ShuangLI59/person_search) and [PRW](http://zheng-lab.cecs.anu.edu.au/Project/project_prw.html). Other information including the naming style, image size, etc., can be also found in the original project pages.
+* Please download original images from [CUHK-SYSU](https://github.com/ShuangLI59/person_search)[[2](#refer-anchor-2)] and [PRW](http://zheng-lab.cecs.anu.edu.au/Project/project_prw.html)[[3](#refer-anchor-3)]. Other information including the naming style, image size, etc., can be also found in the original project pages.
 
 * We provide txt files for annotation in folder `annotation`. The annotation protocal is similar to PRW, `gallery.txt` and `query.txt` inlucde annotation with the format as [ID, left, top, right, bottom, image_name]. Only objects that pass through at least 2 cameras are taken into account.
   * The INS-PRW dataset has 7,834 bboxes for `INS_PRW_gallery.txt` and 1,537 bboxes for `INS_PRW_query.txt`.
@@ -36,7 +36,7 @@ This code has the source code for the paper "Cycle Self-Training (CST) for Insta
 * Distribution of normalized area and aspect ratio of the annotated boxes. From (a) and (c), the boxes occupy much smaller area in the full image compared with the person boxes, which means they are much harder to be localized. From (b) and (d), the aspect ratio distribution of the new annotated objects is more spreading out compared to those of person boxes, meaning that our objects are of wider variations.
 
 <p align="center">
-  <img src="images/statistics_1.jpg" width="45%" />
+  <img src="images/statistics_1.jpg" width="50%" />
 </p>
 
 * Category statistics of the two annotated datasets are shown below. Over 90% of the objects are excluded from VOC 20 classes as seen from (a) and (c). A significant portion of the objects do not belong to person accessories, meaning that they are not found being carried by a person.
@@ -66,7 +66,7 @@ We evaluate DELG[[4](#refer-anchor-4)], SiamRPN[[5](#refer-anchor-5)], GlobalTra
 | SiamRPN            | 16.0(14.2)    | 0.0(0.0)  |
 | GlobalTrack        | 28.4(27.8)    | 0.2(0.2)  |
 | our baseline       | 43.1(42.1)    | 18.7(8.5) |
-| *our selftrain*    | *47.4(45.9)*  | *20.2(9.8)* |
+| **our selftrain**  | **47.4(45.9)** | **20.2(9.8)** |
 
 * For more information, feel free to contact us at instance_search@163.com.
 
