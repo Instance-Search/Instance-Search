@@ -66,7 +66,7 @@ We evaluate DELG[[4](#refer-anchor-4)], SiamRPN[[5](#refer-anchor-5)], GlobalTra
 | SiamRPN            | 16.0(14.2)    | 0.0(0.0)  |
 | GlobalTrack        | 28.4(27.8)    | 0.2(0.2)  |
 | our baseline       | 43.1(42.1)    | 18.7(8.5) |
-| **our selftrain**  | **47.4(45.9)** | **20.2(9.8)** |
+| our selftrain      | **47.4(45.9)** | **20.2(9.8)** |
 
 * For more information, feel free to contact us at instance_search@163.com.
 
