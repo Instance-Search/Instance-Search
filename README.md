@@ -19,7 +19,7 @@ This code has the source code for the paper "Revisiting instance search: a new b
 * Sample images from INS-PRW and INS-CUHK-SYSU are shown below. Note the `non saliency(great scale change)`, `class-agnostic`, `great view change` feature of the datasets.
 
 <p align="center">
-  <img src="images/sample.jpg" width="60%" />
+  <img src="images/Sample.png" width="60%" />
 </p>
 
 
@@ -42,7 +42,7 @@ This code has the source code for the paper "Revisiting instance search: a new b
 * Category statistics of the two annotated datasets are shown below. There is only a small portion of VOC predefined categories.
 
 <p align="center">
-  <img src="images/statistics_2.jpg" width="50%" />
+  <img src="images/Category.png" width="50%" />
 </p>
 
 ## Evaluation
