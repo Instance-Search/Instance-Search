@@ -36,13 +36,13 @@ This code has the source code for the paper "Revisiting instance search: a new b
 * Distribution of normalized area and aspect ratio of the annotated boxes. From (a), the boxes occupy much smaller area in the full image compared with the person boxes, which means they are much harder to be localized. From (b), the aspect ratio distribution of the new annotated objects is more spreading out compared to those of person boxes, meaning that our objects are of wider variations.
 
 <p align="center">
-  <img src="images/statistics_1.jpg" width="50%" />
+  <img src="images/statistics_1.jpg" width="70%" />
 </p>
 
 * Category statistics of the two annotated datasets are shown below. There is only a small portion of VOC predefined categories.
 
 <p align="center">
-  <img src="images/Category.png" width="50%" />
+  <img src="images/Category.png" width="70%" />
 </p>
 
 ## Evaluation
