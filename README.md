@@ -1,6 +1,6 @@
-# Cycle Self-Training for Instance Search in Real World
+# Revisiting instance search: a new benchmark using Cycle Self-Training
 
-This code has the source code for the paper "Cycle Self-Training for Instance Search in Real World Applications". Including:
+This code has the source code for the paper "Revisiting instance search: a new benchmark using Cycle Self-Training". Including:
 
 * the annotation of INS-PRW
 
@@ -33,13 +33,13 @@ This code has the source code for the paper "Cycle Self-Training for Instance Se
 | INS-CUHK-SYSU | 6,972 | 9,648  | 16,780  | 6,972   |
 
 
-* Distribution of normalized area and aspect ratio of the annotated boxes. From (a) and (c), the boxes occupy much smaller area in the full image compared with the person boxes, which means they are much harder to be localized. From (b) and (d), the aspect ratio distribution of the new annotated objects is more spreading out compared to those of person boxes, meaning that our objects are of wider variations.
+* Distribution of normalized area and aspect ratio of the annotated boxes. From (a), the boxes occupy much smaller area in the full image compared with the person boxes, which means they are much harder to be localized. From (b), the aspect ratio distribution of the new annotated objects is more spreading out compared to those of person boxes, meaning that our objects are of wider variations.
 
 <p align="center">
   <img src="images/statistics_1.jpg" width="50%" />
 </p>
 
-* Category statistics of the two annotated datasets are shown below. Over 90% of the objects are excluded from VOC 20 classes as seen from (a) and (c). A significant portion of the objects do not belong to person accessories, meaning that they are not found being carried by a person.
+* Category statistics of the two annotated datasets are shown below. There is only a small portion of VOC predefined categories.
 
 <p align="center">
   <img src="images/statistics_2.jpg" width="50%" />
@@ -66,7 +66,7 @@ We evaluate DELG[[4](#refer-anchor-4)], SiamRPN[[5](#refer-anchor-5)], GlobalTra
 | SiamRPN            | 16.0(14.2)    | 0.0(0.0)  |
 | GlobalTrack        | 28.4(27.8)    | 0.2(0.2)  |
 | our baseline       | 43.1(42.1)    | 18.7(8.5) |
-| our selftrain      | **47.4(45.9)** | **20.2(9.8)** |
+| our selftrain      | **49.4(47.4)** | **24.2(13.4)** |
 
 * For more information, feel free to contact us at instance_search@163.com.
 
