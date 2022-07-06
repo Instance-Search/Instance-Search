@@ -1,0 +1,64 @@
+PATH:
+    FRAME_ALL_DIR: "/home/gongyou.zyq/datasets/instance_search/Instance160/valid_images/"
+    FRAME_DIR: "/home/gongyou.zyq/datasets/instance_search/Instance160/valid_images/"
+    SEARCH_DIR: "/home/gongyou.zyq/datasets/instance_search/Instance160/valid_images/"
+    REID_DIR: "/home/gongyou.zyq/datasets/instance_search/Instance160/reid_images/"
+
+EVAL:
+    DATASET_NAME: "Instance160"
+    DATA_MODE: "Instance160/baseline"
+    ROUGH_LOCALIZER: 'globaltrack'
+    REFINER: 'reid'    # 'reid', 'k_reciprocal', 'sift', 'delg', 'null'
+    SIM_MODE: "reid"    # 'ROUGH_LOCALIZER + REFINER
+    MIN_SAMPLE_PER_ID: 2
+    LABEL_FILE: "./tests/features/Instance160_search_label.pkl"
+    TEST_QUERY_NUM: 160
+    IOU_THR: 0.5
+    NMS: 0.3
+    RANK_GLOBAL_TOPK: [1, 5, 10, 20]
+    MIN_HEIGHT: 10
+    REFINE_MIN_THR: 0.0
+    SEPARATE_CAM: False
+    VIS_FLAG: False
+    VIS_TOPK: 20
+    K_RECIPROCAL_TOPK: 200
+    LOCALIZER_GLOBAL_TOPK: 20000
+    QUERY_FORMAT: 'large_bbox'    # large_bbox, small_pure, small_pad, small_pad_context
+    MULTI_QUERY: False
+    OUTPUT_SPEED: False
+    PROPOSAL_MODE: 'all'
+    PROPOSAL_PER_LARGE: 5
+    VERBOSE: False
+    GALLERY_RANGE: 'local'
+    QUERY_DATA_SOURCE: 'test_probe'
+    GALLERY_DATA_SOURCE: 'test_gallery'
+    MAP_METRIC: 'retrieval'
+    
+INFERENCE:
+    LOC_HALF_FLAG: True
+    REID_HALF_FLAG: True
+    REID_MODEL: "./instance_search/reid/sot_r50_fp16.onnx"
+    REID_IMAGE_HEIGHT: 224
+    REID_IMAGE_WIDTH: 224
+    REID_BATCH_SIZE: 1
+    GLOBALTRACK_SCALE: (1333, 800)    # (640, 480), (1333, 800)
+    LOCALIZER_TOPK: 1
+
+DATA:
+    MIN_HEIGHT_RATIO: 0.07    # required by product manager
+    SKIP_FRAMES: 25
+    LOAD_FORMAT: "disk"    # disk, numpy, string
+
+DISTRIBUTE:
+    NUM_GPU: 8
+    WORKER_PER_GPU: 3
+
+SELF_TRAIN:
+    TOPK_LOC: 1
+    TOPK_IDE: 1
+    MODE: 'Instance160/self_train/current'
+    QUERY_SEED_NUM: 30000
+    QUERY_SEED_TYPE: 'general_detection'
+    QUERY_SEED_TYPE_LIST: ('general_detection',)
+    QUERY_SEED_NEIGHBOUR: 0
+    ONLY_PERSON: False

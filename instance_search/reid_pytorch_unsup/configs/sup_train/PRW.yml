@@ -1,0 +1,74 @@
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_PATH: '/home/gongyou.zyq/.torch/models/resnet50-19c8e357.pth'
+
+INPUT:
+  SIZE_TRAIN: [384, 128]
+  SIZE_TEST: [384, 128]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 1.0 # random erasing
+
+# dummpy
+TGT_UNSUPDATA:
+  UNSUP_MODE: 'sup'
+  CLUSTER_TOPK: 50
+  CLUSTER_DIST_THRD: 0.25
+  PSOLABEL_PERIOD: 60
+  NAMES: ('ourapi')
+  SAMPLER_UNIFORM: 'id' # img or id
+  NUM_INSTANCE: 8
+  CLS_LR: 0.0
+  MIN_SAMPLES: 2
+
+# dummpy
+TGT_SUPDATA:
+  NAMES: ('ourapi')
+  SAMPLER_UNIFORM: 'id' # img or id
+  NUM_INSTANCE: 8
+  NUM_POS_INSTANCE: 4
+
+
+SRC_DATA:
+  NAMES: ('ourapi')
+  SAMPLER_UNIFORM: 'id' # img or id
+  NUM_INSTANCE: 8
+
+VAL_DATA:
+  NAMES: ('ourapi')
+
+DATALOADER:
+  NUM_WORKERS: 4
+  SAMPLER_PROB: [1.0,0.0,0.0] # src, tgt_sup, tgt_unsup
+  IMS_PER_BATCH: 48
+
+LOSS:
+  LOSS_TYPE: ['trp_cls','trp','trp_cls'] # src, tgt_sup, tgt_unsup
+  LOSS_WEIGHTS: [1.0,0.0,0.0] # src, tgt_sup, tgt_unsup
+  IF_LABELSMOOTH: 'on'
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 31
+  BASE_LR: 0.09
+  WEIGHT_DECAY: 0.0005
+
+  STEPS: [12, 24]
+
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 0
+  WARMUP_METHOD: 'linear'
+
+  CHECKPOINT_PERIOD: 30
+  LOG_PERIOD: 10
+  EVAL_PERIOD: 30
+
+TEST:
+  IMS_PER_BATCH: 64
+  RE_RANKING: 'no'
+  WEIGHT: "path"
+  NECK_FEAT: 'before'
+  FEAT_NORM: 'yes'
+
+OUTPUT_DIR: "./log/tmp"
+
+

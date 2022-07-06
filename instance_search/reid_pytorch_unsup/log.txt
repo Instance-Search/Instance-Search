@@ -1,0 +1,310 @@
+2020-05-15 15:53:51,941 reid_baseline INFO: nodes:1 gpus_on_current_node:1
+2020-05-15 15:53:51,942 reid_baseline INFO: Running with config:
+DATALOADER:
+  IMS_PER_BATCH: 72
+  NUM_WORKERS: 4
+  SAMPLER_PROB: [0.3, 0.4, 0.3]
+DIST:
+  BACKEND: nccl
+  NODE_RANK: 0
+  NODE_WORLDSIZE: 1
+  URL: tcp://127.0.0.17:12347
+INPUT:
+  PADDING: 10
+  PIXEL_MEAN: [123.675, 116.28, 103.53]
+  PIXEL_NORM: yes
+  PIXEL_STD: [57.0, 57.0, 57.0]
+  PROB: 0.5
+  RESIZE_ORDER: first
+  RE_PROB: 1.0
+  RE_SH: 0.2
+  RE_USING_MEAN: no
+  SIZE_TEST: [384, 128]
+  SIZE_TRAIN: [384, 128]
+LOSS:
+  IF_LABELSMOOTH: on
+  LOSS_TYPE: ['trp_cls', 'trp', 'trp_cls']
+  LOSS_WEIGHTS: [1.0, 1.0, 1.0]
+  TRP_HNM: yes
+  TRP_L2: yes
+  TRP_MARGIN: 0.3
+MODEL:
+  DEVICE: cuda
+  DEVICE_ID: 7
+  DROPOUT: 0.7
+  LAST_STRIDE: 1
+  NAME: resnet50
+  NECK: 512
+  PRETRAIN_CHOICE: self
+  PRETRAIN_PATH: /disk1/kugang.cwh/projects/reid_pyt/log/online_models/market/resnet50_model_60.pth
+OUTPUT_DIR: /disk1/kugang.cwh/projects/reid_pyt/log/market2duke
+SOLVER:
+  BASE_LR: 0.0009
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 6
+  CLUSTER_MARGIN: 0.3
+  EVAL_PERIOD: 1
+  GAMMA: 0.1
+  LOG_PERIOD: 100
+  MAX_EPOCHS: 61
+  MOMENTUM: 0.9
+  OPTIMIZER_NAME: SGD
+  STEPS: (24, 48)
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 1
+  WARMUP_METHOD: linear
+  WEIGHT_DECAY: 0.0
+  WEIGHT_DECAY_BIAS: 0.0005
+SRC_DATA:
+  NAMES: ourapi
+  NUM_INSTANCE: 6
+  NUM_POS_INSTANCE: 0
+  SAMPLER_UNIFORM: id
+  TRAIN_DIR: /disk1/kugang.cwh/datasets/Corrected_Market1501
+TEST:
+  FEAT_NORM: yes
+  IMS_PER_BATCH: 64
+  NECK_FEAT: before
+  RE_RANKING: no
+  WEIGHT: path
+TGT_SUPDATA:
+  NAMES: ourapi
+  NUM_INSTANCE: 36
+  NUM_POS_INSTANCE: 4
+  SAMPLER_UNIFORM: id
+  TRAIN_DIR: /disk1/kugang.cwh/datasets/Refined_DukeMTMC_reID
+TGT_UNSUPDATA:
+  CLS_LR: 0.01
+  CLUSTER_DIST_THRD: 0.15
+  CLUSTER_TOPK: 500
+  NAMES: ourapi
+  NUM_INSTANCE: 6
+  NUM_POS_INSTANCE: 0
+  PSOLABEL_PERIOD: 6
+  SAMPLER_UNIFORM: id
+  TRAIN_DIR: /disk1/kugang.cwh/datasets/Refined_DukeMTMC_reID
+VAL_DATA:
+  NAMES: ourapi
+  TRAIN_DIR: /disk1/kugang.cwh/datasets/Refined_DukeMTMC_reID
+2020-05-15 15:53:51,942 reid_baseline.check INFO: mean and std are used. mean [0.485, 0.456, 0.406], std [0.2235294117647059, 0.2235294117647059, 0.2235294117647059]
+2020-05-15 15:53:52,233 reid_baseline.check INFO: Dataset statistics:
+2020-05-15 15:53:52,233 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:52,233 reid_baseline.check INFO:   subset   | # ids | # images | # cameras
+2020-05-15 15:53:52,234 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:52,234 reid_baseline.check INFO:   train    |     0 |        0 |         0
+2020-05-15 15:53:52,234 reid_baseline.check INFO:   query    |   702 |     2228 |         8
+2020-05-15 15:53:52,234 reid_baseline.check INFO:   gallery  |  1110 |    17661 |         8
+2020-05-15 15:53:52,234 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:52,389 reid_baseline.check INFO: Dataset statistics:
+2020-05-15 15:53:52,389 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:52,389 reid_baseline.check INFO:   subset   | # ids | # images | # cameras
+2020-05-15 15:53:52,389 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:52,389 reid_baseline.check INFO:   train    |   751 |    12933 |         6
+2020-05-15 15:53:52,389 reid_baseline.check INFO:   query    |     0 |        0 |         0
+2020-05-15 15:53:52,389 reid_baseline.check INFO:   gallery  |     0 |        0 |         0
+2020-05-15 15:53:52,389 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:52,677 reid_baseline.check INFO: semi-hnm is used for triplet loss.
+2020-05-15 15:53:52,677 reid_baseline.check INFO: l2 normal is used for triplet loss.
+src_trploss_func <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8>
+src_clsloss_func <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60>
+tgt_sup_trploss_func <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28>
+tgt_unsup_trploss_func <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488>
+tgt_unsup_clsloss_func <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510>
+2020-05-15 15:53:55,318 reid_baseline.train INFO: Start training
+2020-05-15 15:53:57,225 reid_baseline.check INFO: mean and std are used. mean [0.485, 0.456, 0.406], std [0.2235294117647059, 0.2235294117647059, 0.2235294117647059]
+2020-05-15 15:53:57,446 reid_baseline.check INFO: Dataset statistics:
+2020-05-15 15:53:57,447 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:57,447 reid_baseline.check INFO:   subset   | # ids | # images | # cameras
+2020-05-15 15:53:57,447 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:53:57,447 reid_baseline.check INFO:   train    |   702 |    16522 |         8
+2020-05-15 15:53:57,447 reid_baseline.check INFO:   query    |     0 |        0 |         0
+2020-05-15 15:53:57,448 reid_baseline.check INFO:   gallery  |     0 |        0 |         0
+2020-05-15 15:53:57,448 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,439 reid_baseline.train INFO: Cluster Acc: 0.931, classes: 460 imgnum: 4007
+2020-05-15 15:55:12,439 reid_baseline.check INFO: flip is used: 0.500000.
+2020-05-15 15:55:12,440 reid_baseline.check INFO: pad is used: 10.
+2020-05-15 15:55:12,440 reid_baseline.check INFO: mean and std are used. mean [0.485, 0.456, 0.406], std [0.2235294117647059, 0.2235294117647059, 0.2235294117647059]
+2020-05-15 15:55:12,440 reid_baseline.check INFO: random erase is used. prob=1.000000, sh=0.200000, mean=[0.0, 0.0, 0.0]
+2020-05-15 15:55:12,601 reid_baseline.check INFO: Dataset statistics:
+2020-05-15 15:55:12,601 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,601 reid_baseline.check INFO:   subset   | # ids | # images | # cameras
+2020-05-15 15:55:12,601 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,601 reid_baseline.check INFO:   train    |   751 |    12933 |         6
+2020-05-15 15:55:12,601 reid_baseline.check INFO:   query    |     0 |        0 |         0
+2020-05-15 15:55:12,601 reid_baseline.check INFO:   gallery  |     0 |        0 |         0
+2020-05-15 15:55:12,601 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,781 reid_baseline.check INFO: Dataset statistics:
+2020-05-15 15:55:12,781 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,781 reid_baseline.check INFO:   subset   | # ids | # images | # cameras
+2020-05-15 15:55:12,781 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,781 reid_baseline.check INFO:   train    |   702 |    16522 |         8
+2020-05-15 15:55:12,781 reid_baseline.check INFO:   query    |     0 |        0 |         0
+2020-05-15 15:55:12,781 reid_baseline.check INFO:   gallery  |     0 |        0 |         0
+2020-05-15 15:55:12,781 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,961 reid_baseline.check INFO: Dataset statistics:
+2020-05-15 15:55:12,961 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,961 reid_baseline.check INFO:   subset   | # ids | # images | # cameras
+2020-05-15 15:55:12,961 reid_baseline.check INFO:   ----------------------------------------
+2020-05-15 15:55:12,961 reid_baseline.check INFO:   train    |   702 |    16522 |         8
+2020-05-15 15:55:12,961 reid_baseline.check INFO:   query    |     0 |        0 |         0
+2020-05-15 15:55:12,961 reid_baseline.check INFO:   gallery  |     0 |        0 |         0
+2020-05-15 15:55:12,961 reid_baseline.check INFO:   ----------------------------------------
+offset: [0, 12933, 16522]
+max batches: [4506, 25272, 2760]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 0 <function make_loss.<locals>.tgt_unsup_trploss_func at 0x7f0540c52488> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2 1 <function make_loss.<locals>.tgt_unsup_clsloss_func at 0x7f0540c52510> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 0 <function make_loss.<locals>.src_trploss_func at 0x7f0540c379d8> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+0 1 <function make_loss.<locals>.src_clsloss_func at 0x7f0540c37a60> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+1 0 <function make_loss.<locals>.tgt_sup_trploss_func at 0x7f0540c37f28> [torch.Size([72, 751]), torch.Size([]), torch.Size([72, 500]), torch.Size([72, 512])]
+2020-05-15 15:56:33,243 reid_baseline.train INFO: Epoch[1] Iter[100/351] src: 5.992, sup: 0.375, unsup: 7.527, lr: 9.00e-06/1.00e-02

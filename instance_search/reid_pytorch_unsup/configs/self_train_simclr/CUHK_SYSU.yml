@@ -1,0 +1,71 @@
+MODEL:
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: 'log/baseline/resnet50_model_5.pth'
+  NAME: 'resnet50'
+
+INPUT:
+  SIZE_TRAIN: [224, 224]
+  SIZE_TEST: [224, 224]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.0 # random erasing
+
+TGT_UNSUPDATA:
+  UNSUP_MODE: 'simclr'    # cluster_simclr or simclr
+  NAMES: ('bbox_unsup')
+  SAMPLER_UNIFORM: 'simclr' # img or id or simclr
+  NUM_INSTANCE: 2
+  CLS_LR: 0.0
+  MIN_SAMPLES: 1
+  TEMPERATURE: 0.5
+
+TGT_SUPDATA:
+  NAMES: ('ourapi')
+  SAMPLER_UNIFORM: 'id' # img or id
+  NUM_INSTANCE: 2
+  NUM_POS_INSTANCE: 4
+
+SRC_DATA:
+  NAMES: ('ourapi')
+  SAMPLER_UNIFORM: 'id' # img or id
+  NUM_INSTANCE: 2
+
+VAL_DATA:
+  NAMES: ('ourapi')
+
+DATALOADER:
+  NUM_WORKERS: 4
+  SAMPLER_PROB: [0.0,0.0,1.0] # src, tgt_sup, tgt_unsup
+  IMS_PER_BATCH: 128
+
+LOSS:
+  LOSS_TYPE: ['trp_cls','trp','simclr'] # src, tgt_sup, tgt_unsup
+  LOSS_WEIGHTS: [0.0,0.0,1.0] # src, tgt_sup, tgt_unsup
+  IF_LABELSMOOTH: 'on'
+  SIMCLR_WEIGHT: 1.0
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 31
+  BASE_LR: 0.009
+  WEIGHT_DECAY: 0.0005
+
+  STEPS: [12, 24]
+
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 0
+  WARMUP_METHOD: 'linear'
+
+  CHECKPOINT_PERIOD: 30
+  LOG_PERIOD: 10
+  EVAL_PERIOD: 30
+
+TEST:
+  IMS_PER_BATCH: 64
+  RE_RANKING: 'no'
+  WEIGHT: "path"
+  NECK_FEAT: 'before'
+  FEAT_NORM: 'yes'
+
+OUTPUT_DIR: "./log/tmp"
+
+
