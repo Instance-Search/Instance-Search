@@ -1,10 +1,12 @@
-# Revisiting instance search: a new benchmark using Cycle Self-Training
+# [Revisiting instance search: a new benchmark using Cycle Self-Training](https://www.sciencedirect.com/science/article/abs/pii/S0925231222007445)
 
 This code has the source code for the paper "Revisiting instance search: a new benchmark using Cycle Self-Training". Including:
 
-* the annotation of INS-PRW
+* the annotation description
 
-* the annotation of INS-CUHK-SYSU
+* the evaluation protocal and leaderboard
+
+* Train/Evaluate/Demo code
 
 ## Annotation
 
@@ -68,7 +70,31 @@ We evaluate DELG[[4](#refer-anchor-4)], SiamRPN[[5](#refer-anchor-5)], GlobalTra
 | our baseline       | 43.1(42.1)    | 18.7(8.5) |
 | our selftrain      | **49.4(47.4)** | **24.2(13.4)** |
 
-* For more information, feel free to contact us at instance_search@163.com.
+## Code
+We use INS-CUHK-SYSU as an example.
+
+### Eval
+`sh experiments/baseline_ins.sh` to evaluate datasets.
+
+### Demo
+`sh experiments/demo.sh` to run instance search on several sample images.
+
+### Train
+For simplicity, we only use 3 images from `images/self_train_samples` as self-train source.
+`sh experiments/gen_query_seed.sh` to prepare query seed files.
+`sh experiments/self_train.sh` to start cycle self training.
+
+
+## Citation
+```
+@article{zhang2022revisiting,
+  title={Revisiting instance search: a new benchmark using Cycle Self-Training},
+  author={Zhang, Yuqi and Liu, Chong and Chen, Weihua and Xu, Xianzhe and Wang, Fan and Li, Hao and Hu, Shiyu and Zhao, Xin},
+  journal={Neurocomputing},
+  year={2022},
+  publisher={Elsevier}
+}
+```
 
 ## Refenrence
 <div id="refer-anchor-1"></div>
